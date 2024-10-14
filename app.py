@@ -1,10 +1,8 @@
 from matplotlib import pyplot as plt
 import pandas as pd
-import plotly.express as px
 import streamlit as st
 import seaborn as sns
 import plotly.graph_objects as go
-from sklearn.preprocessing import LabelEncoder
 import altair as alt
 
 st.set_page_config(page_title="ATL Brave Baseball Data Dashboard",
