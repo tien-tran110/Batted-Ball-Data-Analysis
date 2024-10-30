@@ -72,7 +72,6 @@ speed. Homeruns are almost always hit with an angle from 25 to 35 launch degrees
 "---"
 
 st.write("### Differences in outcomes percentage by choosing the right launch angle")
-
 # Allow filter to further investigate the range of launch angle
 launch_angle_filter = st.slider("Select launch angle range", min_value=-50, max_value=50, value=(-50, 50))
 
@@ -86,7 +85,6 @@ outcome_counts["PERCENTAGE"] = (outcome_counts["COUNT"] / outcome_counts["COUNT"
 # Format to two decimal places
 outcome_counts["PERCENTAGE"] = outcome_counts["PERCENTAGE"].round(2)
 
-@st.cache_data
 def donut_chart(use_container_width: bool):
     # Create a chart using Altair
     chart = alt.Chart(outcome_counts).mark_arc(innerRadius=50).encode(
@@ -334,7 +332,8 @@ def get_chart_batters(use_container_width: bool):
 
     # Create the stacked bar chart
     chart = alt.Chart(chart_data).mark_bar().encode(
-        x=alt.X("Batter:N", sort="-y", title="Batter"),  # Sort by y value for better visualization
+        # Sort by y value for better visualization
+        x=alt.X("Batter:N", sort="-y", title="Batter"),
         y=alt.Y("sum(Count):Q", title="Hit Count"),  # Sum of hit types
         color=alt.Color("Hit Type:N", title="Hit Type"),  # Different hit types
         tooltip=["Batter", "sum(Count)", "Hit Type"]  # Tooltip to display more information
